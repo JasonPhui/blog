@@ -1,6 +1,6 @@
 package cn.ph.blog.core.configurer;
 
-import com.sun.org.apache.bcel.internal.generic.DADD;
+
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
@@ -10,7 +10,11 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
 import javax.sql.DataSource;
-import java.io.IOException;
+
+/**
+ * 在springboot中使用mybatis需要进行一些基本的配置，有两种方式，本项目采用的是使用配置类来配置
+ * 另一种方式是在application.properties文件中配置
+ */
 
 @Configuration
 public class MybatisConfigurer {
