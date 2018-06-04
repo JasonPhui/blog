@@ -1,4 +1,7 @@
-package cn.ph.blog.sevice.impl;
+package cn.ph.blog.sevice;
 
-public class UserInfoService {
+import cn.ph.blog.model.UserInfo;
+
+public interface UserInfoService {
+    UserInfo selectById(Integer id);
 }
