@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 /**
  * Druid数据源配置
  */
+@Configuration
 public class DruidDataSourceConfigurer {
 
     private Logger logger = LoggerFactory.getLogger(DruidDataSourceConfigurer.class);
