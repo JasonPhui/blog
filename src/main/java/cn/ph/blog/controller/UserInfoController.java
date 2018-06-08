@@ -15,7 +15,7 @@ public class UserInfoController {
     @Resource
     private UserInfoService userInfoService;
     
-    private String msg="hello git";
+    protected String msg="hello git";
     
     @PostMapping("/hello")
     public String hello(){
