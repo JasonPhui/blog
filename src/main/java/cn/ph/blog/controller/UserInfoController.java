@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 public class UserInfoController {
 
     @Resource
-    protected UserInfoService userInfoService;
+    private UserInfoService userInfoService;
 
     @PostMapping("/hello")
     public String hello(){
