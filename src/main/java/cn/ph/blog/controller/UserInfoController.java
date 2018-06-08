@@ -13,9 +13,9 @@ import javax.annotation.Resource;
 public class UserInfoController {
 
     @Resource
-    protected UserInfoService userInfoService;
+    private UserInfoService userInfoService;
     
-    protected String msg="hello git";
+    private String msg="hello git";
     
     @PostMapping("/hello")
     public String hello(){
