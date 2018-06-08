@@ -1,6 +1,7 @@
 package cn.ph.blog.core.configurer;
 
 
+import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
@@ -26,7 +27,7 @@ public class MybatisConfigurer {
      * @throws Exception
      */
     @Bean
-    public SqlSessionFactory sqlSessionFactoryBean(DataSource dataSource) throws Exception {
+    public SqlSessionFactory sqlSessionFactoryBean(DruidDataSource dataSource) throws Exception {
         SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
         factory.setDataSource(dataSource);
         factory.setTypeAliasesPackage("cn.ph.blog.mode");
