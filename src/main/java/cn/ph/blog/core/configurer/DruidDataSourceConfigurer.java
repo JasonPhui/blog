@@ -42,9 +42,11 @@ public class DruidDataSourceConfigurer {
     @Value("${spring.datasource.maxWait}")
     private int maxWait;
 
+    //配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
     @Value("${spring.datasource.timeBetweenEvictionRunsMillis}")
     private int timeBetweenEvictionRunsMillis;
 
+    //配置一个连接在池中最小生存的时间，单位是毫秒
     @Value("${spring.datasource.minEvictableIdleTimeMillis}")
     private int minEvictableIdleTimeMillis;
 
@@ -62,7 +64,7 @@ public class DruidDataSourceConfigurer {
 
     @Value("${spring.datasource.poolPreparedStatements}")
     private boolean poolPreparedStatements;
-
+    //打开PSCache，并且指定每个连接上PSCache的大小
     @Value("${spring.datasource.maxPoolPreparedStatementPerConnectionSize}")
     private int maxPoolPreparedStatementPerConnectionSize;
 
@@ -72,8 +74,8 @@ public class DruidDataSourceConfigurer {
     @Value("{spring.datasource.connectionProperties}")
     private String connectionProperties;
 
-    @Bean
-    public DataSource getDataSource() {
+    @Bean(destroyMethod = "close", initMethod = "init")
+    public DruidDataSource getDataSource() {
         DruidDataSource datasource = new DruidDataSource();
         datasource.setUrl(this.dbUrl);
         datasource.setUsername(username);
