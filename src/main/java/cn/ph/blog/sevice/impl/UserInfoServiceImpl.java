@@ -1,5 +1,6 @@
 package cn.ph.blog.sevice.impl;
 
+import cn.ph.blog.core.ret.ServiceException;
 import cn.ph.blog.dao.UserInfoMapper;
 import cn.ph.blog.model.UserInfo;
 import cn.ph.blog.sevice.UserInfoService;
@@ -15,6 +16,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public UserInfo selectById(Integer id) {
-        return userInfoMapper.selectById(id);
+        UserInfo userInfo = userInfoMapper.selectById(id);
+        if(userInfo == null){
+            throw new ServiceException("暂无该用户");
+        }
+        return userInfo;
     }
 }
