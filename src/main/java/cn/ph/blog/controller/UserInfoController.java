@@ -16,15 +16,11 @@ public class UserInfoController {
 
     @Resource
     private UserInfoService userInfoService;
-    
-    @PostMapping("/hello")
-    public String hello(){
-        return "hello springboot";
-    }
 
     @PostMapping("/selectById")
     public RetResult<UserInfo> selectById(Integer id){
         UserInfo userInfo = userInfoService.selectById(id);
+        System.out.println(userInfo);
         return RetResponse.makeOKRsp(userInfo);
     }
 }
