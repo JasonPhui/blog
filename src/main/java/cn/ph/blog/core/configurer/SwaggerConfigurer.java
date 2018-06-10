@@ -31,8 +31,8 @@ public class SwaggerConfigurer {
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
                 .title("mySpringBoot 使用Swagger2构建RESTful APIs")
-                .description("************")
-                .termsOfServiceUrl("@@@@@@@@@@@@@@@@@@")
+                .description("更多SpringBoot文章请关注：http://www.baidu.com")
+                .termsOfServiceUrl("http://www.baidu.com")
                 .contact(new Contact("WoodCharcoal", "https://github.com/WoodCharcoal", null))
                 .version("1.0")
                 .build();
