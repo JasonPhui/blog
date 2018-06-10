@@ -18,6 +18,7 @@ public class UserInfo {
     /**
      * 密码
      */
+    @JsonIgnore
     private String password;
 
     public int getId() {
@@ -37,7 +38,6 @@ public class UserInfo {
         this.userName = userName;
     }
 
-    @JsonIgnore
     public String getPassword() {
         return password;
     }
