@@ -4,6 +4,7 @@ import cn.ph.blog.core.ret.RetResponse;
 import cn.ph.blog.core.ret.RetResult;
 import cn.ph.blog.model.UserInfo;
 import cn.ph.blog.sevice.UserInfoService;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -32,6 +33,18 @@ public class UserInfoController {
     public RetResult<UserInfo> selectById(@RequestParam  Integer id){
         UserInfo userInfo = userInfoService.selectById(id);
         return RetResponse.makeOKRsp(userInfo);
+    }
+
+    @ApiOperation(value = "查询用户", notes = "分页查询")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "page", value = "当前页码", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "size", value = "每页显示条数", dataType = "Integer", paramType = "query")
+    })
+    @PostMapping("/selectAll")
+    public RetResult<PageInfo<UserInfo>> selectAll(@RequestParam(defaultValue = "0") Integer page,
+                                                   @RequestParam(defaultValue = "0") Integer size){
+        PageInfo<UserInfo> pageInfo = userInfoService.selectAll(page, size);
+        return RetResponse.makeOKRsp(pageInfo);
     }
 
     @PostMapping("/testException")
