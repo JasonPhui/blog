@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface UserInfoMapper {
     UserInfo selectById(@Param("id") Integer id);
-    List<UserInfo> selectALL();
+    List<UserInfo> selectAll();
 }
