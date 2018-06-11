@@ -30,7 +30,7 @@ public class MybatisConfigurer {
     public SqlSessionFactory sqlSessionFactoryBean(DruidDataSource dataSource) throws Exception {
         SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
         factory.setDataSource(dataSource);
-        factory.setTypeAliasesPackage("cn.ph.blog.mode");
+        factory.setTypeAliasesPackage("cn.ph.blog.model");
         // 添加xml目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         factory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
