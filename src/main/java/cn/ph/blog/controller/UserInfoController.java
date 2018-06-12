@@ -30,7 +30,7 @@ public class UserInfoController {
             @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Integer", paramType = "query")
     })
     @PostMapping("/selectById")
-    public RetResult<UserInfo> selectById(@RequestParam  Integer id){
+    public RetResult<UserInfo> selectById(@RequestParam  String id){
         UserInfo userInfo = userInfoService.selectById(id);
         return RetResponse.makeOKRsp(userInfo);
     }
@@ -43,12 +43,12 @@ public class UserInfoController {
     @PostMapping("/selectAll")
     public RetResult<PageInfo<UserInfo>> selectAll(@RequestParam(defaultValue = "0") Integer page,
                                                    @RequestParam(defaultValue = "0") Integer size){
-        PageInfo<UserInfo> pageInfo = userInfoService.selectAll(page, size);
+        PageInfo<UserInfo> pageInfo = userInfoService.selectAllByPage(page, size);
         return RetResponse.makeOKRsp(pageInfo);
     }
 
     @PostMapping("/testException")
-    public RetResult<UserInfo> testException(Integer id){
+    public RetResult<UserInfo> testException(String id){
         List a = null;
         a.size();
         UserInfo userInfo = userInfoService.selectById(id);
