@@ -1,31 +1,34 @@
 package cn.ph.blog.model;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
 public class UserInfo {
 
     /**
      *主键
      */
-    private int id;
+    @Id
+    private String id;
 
     /**
      * 用户名
      */
+    @Column(name = "user_name")
     private String userName;
 
     /**
      * 密码
+     * 使用@Transient注解表示忽略字段，不作为表字段使用
      */
-    @JsonIgnore
     private String password;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
