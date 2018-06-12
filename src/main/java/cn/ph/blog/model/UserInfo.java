@@ -22,6 +22,7 @@ public class UserInfo {
      * 密码
      * 使用@Transient注解表示忽略字段，不作为表字段使用
      */
+    @Transient
     private String password;
 
     public String getId() {
