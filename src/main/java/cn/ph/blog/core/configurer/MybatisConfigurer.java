@@ -4,13 +4,12 @@ package cn.ph.blog.core.configurer;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
-import javax.sql.DataSource;
 
 /**
  * 在springboot中使用mybatis需要进行一些基本的配置，有两种方式，本项目采用的是使用配置类来配置
