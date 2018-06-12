@@ -12,16 +12,16 @@
         id, user_name
     </sql>
 
-    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from blog.user_info
-        where id=#{id}
-    </select>
+    <!--<select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+        <!--select-->
+        <!--<include refid="Base_Column_List"/>-->
+        <!--from blog.user_info-->
+        <!--where id=#{id}-->
+    <!--</select>-->
 
-    <select id="selectAll" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from user_info
-    </select>
+    <!--<select id="selectAll" resultMap="BaseResultMap">-->
+        <!--select-->
+        <!--<include refid="Base_Column_List"/>-->
+        <!--from user_info-->
+    <!--</select>-->
 </mapper>
