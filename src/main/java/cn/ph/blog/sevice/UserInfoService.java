@@ -1,9 +1,10 @@
 package cn.ph.blog.sevice;
 
+import cn.ph.blog.core.universal.Service;
 import cn.ph.blog.model.UserInfo;
 import com.github.pagehelper.PageInfo;
 
-public interface UserInfoService {
-    UserInfo selectById(Integer id);
-    PageInfo<UserInfo> selectAll(Integer page, Integer size);
+public interface UserInfoService extends Service<UserInfo> {
+//    UserInfo selectById(Integer id);
+    PageInfo<UserInfo> selectAllByPage(Integer page, Integer size);
 }
