@@ -75,6 +75,7 @@ public class CodeGenerator {
         JavaClientGeneratorConfiguration javaClientGeneratorConfiguration =getJavaClientGeneratorConfiguration();
         context.setJavaClientGeneratorConfiguration(javaClientGeneratorConfiguration);
 
+        //<table>元素用来配置要通过内省的表。只有配置的才会生成实体类和其他文件。
         TableConfiguration tableConfiguration = new TableConfiguration(context);
         tableConfiguration.setTableName(tableName);
         tableConfiguration.setDomainObjectName(modelName);
@@ -107,14 +108,18 @@ public class CodeGenerator {
     }
 
     private static Context getContext(){
+        //ModelType.FLAT表示生成实体类的方式为一张表生成一个实体类
         Context context = new Context(ModelType.FLAT);
         context.setId("Potato");
         context.setTargetRuntime("MyBatis3Simple");
+        //当表名或列名存在关键字或空格时给表名或列名添加分隔符，即单反引号
+        //mybatis中beginningDelimiter和endingDelimiter的默认值为双引号(")，要改为单反引号
         context.addProperty(PropertyRegistry.CONTEXT_BEGINNING_DELIMITER, "`");
         context.addProperty(PropertyRegistry.CONTEXT_ENDING_DELIMITER, "`");
         return context;
     }
 
+    //获取一个数据库连接
     private static JDBCConnectionConfiguration getJDBCConnectionConfiguration(){
         JDBCConnectionConfiguration jdbcConnectionConfiguration = new JDBCConnectionConfiguration();
         jdbcConnectionConfiguration.setConnectionURL(JDBC_URL);
@@ -123,7 +128,7 @@ public class CodeGenerator {
         jdbcConnectionConfiguration.setDriverClass(JDBC_DIVER_CLASS_NAME);
         return jdbcConnectionConfiguration;
     }
-
+    //插件用于扩展或修改通过MyBatis Generator (MBG)代码生成器生成的代码
     private static PluginConfiguration getPluginConfiguration(){
         PluginConfiguration pluginConfiguration = new PluginConfiguration();
         pluginConfiguration.setConfigurationType("tk.mybatis.mapper.generator.MapperPlugin");
@@ -131,15 +136,19 @@ public class CodeGenerator {
         return pluginConfiguration;
     }
 
+    //生成实体类
     private static JavaModelGeneratorConfiguration getJavaModelGeneratorConfiguration(){
         JavaModelGeneratorConfiguration javaModelGeneratorConfiguration = new JavaModelGeneratorConfiguration();
         javaModelGeneratorConfiguration.setTargetProject(JAVA_PATH);
         javaModelGeneratorConfiguration.setTargetPackage(ProjectConstant.MODEL_PACKAGE);
+        //配置允许通过catalog和schema来生成子包
         javaModelGeneratorConfiguration.addProperty("enableSubPackages","true");
+        //去除空格
         javaModelGeneratorConfiguration.addProperty("trimStrings","true");
         return javaModelGeneratorConfiguration;
     }
 
+    //生成*Mapper.xml文件,当targetRuntime为MyBatis3Simple且在JavaClientGenerator中将type设置为XMMAPPER时需要xml文件
     private static SqlMapGeneratorConfiguration getSqlMapGeneratorConfiguration(){
         SqlMapGeneratorConfiguration sqlMapGeneratorConfiguration = new SqlMapGeneratorConfiguration();
         sqlMapGeneratorConfiguration.setTargetProject(RESOURCES_PATH);
@@ -147,10 +156,12 @@ public class CodeGenerator {
         return sqlMapGeneratorConfiguration;
     }
 
+    //如果不配置该元素，就不会生成Mapper接口。
     private static JavaClientGeneratorConfiguration getJavaClientGeneratorConfiguration(){
         JavaClientGeneratorConfiguration javaClientGeneratorConfiguration = new JavaClientGeneratorConfiguration();
         javaClientGeneratorConfiguration.setTargetProject(JAVA_PATH);
         javaClientGeneratorConfiguration.setTargetPackage(ProjectConstant.MAPPER_PACKAGE);
+        //所有的方法都在XML中，接口调用依赖XML文件。
         javaClientGeneratorConfiguration.setConfigurationType("XMLMAPPER");
         return javaClientGeneratorConfiguration;
     }
