@@ -1,4 +1,4 @@
-package cn.ph.blog.sevice;
+package cn.ph.blog.service;
 
 import cn.ph.blog.core.universal.Service;
 import cn.ph.blog.model.UserInfo;

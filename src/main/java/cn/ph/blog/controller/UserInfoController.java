@@ -3,7 +3,7 @@ package cn.ph.blog.controller;
 import cn.ph.blog.core.ret.RetResponse;
 import cn.ph.blog.core.ret.RetResult;
 import cn.ph.blog.model.UserInfo;
-import cn.ph.blog.sevice.UserInfoService;
+import cn.ph.blog.service.UserInfoService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

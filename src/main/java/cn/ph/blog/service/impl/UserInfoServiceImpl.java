@@ -1,10 +1,10 @@
-package cn.ph.blog.sevice.impl;
+package cn.ph.blog.service.impl;
 
 import cn.ph.blog.core.ret.ServiceException;
 import cn.ph.blog.core.universal.AbstractService;
 import cn.ph.blog.dao.UserInfoMapper;
 import cn.ph.blog.model.UserInfo;
-import cn.ph.blog.sevice.UserInfoService;
+import cn.ph.blog.service.UserInfoService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
