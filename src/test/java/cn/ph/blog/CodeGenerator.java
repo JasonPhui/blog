@@ -44,7 +44,7 @@ public class CodeGenerator {
      * @param args
      */
     public static void main(String[] args) {
-        genCode("system_log");
+        genCode("user_label");
     }
 
     /**
@@ -137,7 +137,7 @@ public class CodeGenerator {
             data.put("basePackageService", ProjectConstant.SERVICE_PACKAGE);
             data.put("basePackageServiceImpl", ProjectConstant.SERVICE_IMPL_PACKAGE);
             data.put("basePackageModel", ProjectConstant.MODEL_PACKAGE);
-            data.put("basePackageDao", ProjectConstant.MAPPER_PACKAGE);
+            data.put("basePackageDao", ProjectConstant.MAPPER_PACKAGE_DB2);
 
             File file = new File(JAVA_PATH + PACKAGE_PATH_SERVICE + modelNameUpperCamel + "Service.java");
             if (!file.getParentFile().exists()) {
@@ -228,20 +228,21 @@ public class CodeGenerator {
     private static SqlMapGeneratorConfiguration getSqlMapGeneratorConfiguration(){
         SqlMapGeneratorConfiguration sqlMapGeneratorConfiguration = new SqlMapGeneratorConfiguration();
         sqlMapGeneratorConfiguration.setTargetProject(RESOURCES_PATH);
-        sqlMapGeneratorConfiguration.setTargetPackage("mapper");
+        sqlMapGeneratorConfiguration.setTargetPackage("mapper/db2");
         return sqlMapGeneratorConfiguration;
     }
 
-    //如果不配置该元素，就不会生成Mapper接口。
+    //如果不配置该元素，就不会生成*Mapper接口。
     private static JavaClientGeneratorConfiguration getJavaClientGeneratorConfiguration(){
         JavaClientGeneratorConfiguration javaClientGeneratorConfiguration = new JavaClientGeneratorConfiguration();
         javaClientGeneratorConfiguration.setTargetProject(JAVA_PATH);
-        javaClientGeneratorConfiguration.setTargetPackage(ProjectConstant.MAPPER_PACKAGE);
+        javaClientGeneratorConfiguration.setTargetPackage(ProjectConstant.MAPPER_PACKAGE_DB2);
         //所有的方法都在XML中，接口调用依赖XML文件。
         javaClientGeneratorConfiguration.setConfigurationType("XMLMAPPER");
         return javaClientGeneratorConfiguration;
     }
 
+    //生成驼峰式的model名
     private static String tableNameConvertUpperCamel(String tableName) {
         return CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, tableName.toLowerCase());
     }
