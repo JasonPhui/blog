@@ -2,7 +2,7 @@ package cn.ph.blog.service.impl;
 
 import cn.ph.blog.core.ret.ServiceException;
 import cn.ph.blog.core.universal.AbstractService;
-import cn.ph.blog.dao.UserInfoMapper;
+import cn.ph.blog.dao.db1.UserInfoMapper;
 import cn.ph.blog.model.UserInfo;
 import cn.ph.blog.service.UserInfoService;
 import com.github.pagehelper.PageHelper;
