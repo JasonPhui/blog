@@ -16,35 +16,35 @@ import tk.mybatis.spring.mapper.MapperScannerConfigurer;
  * 另一种方式是在application.properties文件中配置
  */
 
-@Configuration
-public class MybatisConfigurer {
-
-    /**
-     * 作用相当于mybatis中的配置文件，也可以在application.properties中通过配置来代替此类
-     * @param dataSource 从application.properties配置中取得数据源
-     * @return
-     * @throws Exception
-     */
-    @Bean
-    public SqlSessionFactory sqlSessionFactoryBean(DruidDataSource dataSource) throws Exception {
-        SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
-        factory.setDataSource(dataSource);
-        factory.setTypeAliasesPackage("cn.ph.blog.model");
-        // 添加xml目录
-        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        factory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
-        return factory.getObject();
-    }
-
-    /**
-     * 设置SqlSessionFactory的名字与dao层的存储路径
-     * @return
-     */
-    @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer(){
-        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-        mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactoryBean");
-        mapperScannerConfigurer.setBasePackage("cn.ph.blog.dao");
-        return mapperScannerConfigurer;
-    }
-}
+//@Configuration
+//public class MybatisConfigurer {
+//
+//    /**
+//     * 作用相当于mybatis中的配置文件，也可以在application.properties中通过配置来代替此类
+//     * @param dataSource 从application.properties配置中取得数据源
+//     * @return
+//     * @throws Exception
+//     */
+//    @Bean
+//    public SqlSessionFactory sqlSessionFactoryBean(DruidDataSource dataSource) throws Exception {
+//        SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
+//        factory.setDataSource(dataSource);
+//        factory.setTypeAliasesPackage("cn.ph.blog.model");
+//        // 添加xml目录
+//        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+//        factory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
+//        return factory.getObject();
+//    }
+//
+//    /**
+//     * 设置SqlSessionFactory的名字与dao层的存储路径
+//     * @return
+//     */
+//    @Bean
+//    public MapperScannerConfigurer mapperScannerConfigurer(){
+//        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
+//        mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactoryBean");
+//        mapperScannerConfigurer.setBasePackage("cn.ph.blog.dao");
+//        return mapperScannerConfigurer;
+//    }
+//}

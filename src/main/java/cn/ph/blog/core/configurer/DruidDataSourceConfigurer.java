@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  * Druid数据源配置
- */
+
 @Configuration
 public class DruidDataSourceConfigurer {
 
@@ -104,3 +104,4 @@ public class DruidDataSourceConfigurer {
         return datasource;
     }
 }
+ */
