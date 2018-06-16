@@ -126,7 +126,7 @@ public class Webfigurer extends WebMvcConfigurationSupport {
             message = e.getMessage();
         }
         // 将异常信息写入日志
-
+        e.printStackTrace();
         return result;
     }
 
