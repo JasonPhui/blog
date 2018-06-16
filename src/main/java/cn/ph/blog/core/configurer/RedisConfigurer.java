@@ -20,8 +20,15 @@ public class RedisConfigurer extends CachingConfigurerSupport {
     @Bean
     @ConfigurationProperties(prefix = "spring.redis")
     public JedisPoolConfig getRedisConfig(){
-        JedisPoolConfig config = new JedisPoolConfig();
-        return config;
+        JedisPoolConfig poolConfig = new JedisPoolConfig();
+        poolConfig.setMaxTotal(10);
+        poolConfig.setMaxIdle(5);
+        poolConfig.setMinIdle(1);
+        poolConfig.setTestOnBorrow(true);
+        poolConfig.setTestOnReturn(true);
+        poolConfig.setTestWhileIdle(true);
+        poolConfig.setMaxWaitMillis(10*1000);
+        return poolConfig;
     }
 
     @Bean
