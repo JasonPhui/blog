@@ -3,6 +3,7 @@ package cn.ph.blog.model;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import java.util.Set;
 
 public class UserInfo {
 
@@ -22,8 +23,48 @@ public class UserInfo {
      * 密码
      * 使用@Transient注解表示忽略字段，不作为表字段使用
      */
-    @Transient
     private String password;
+
+    /**
+     * 加密盐值
+     */
+    private String salt;
+
+    /**
+     * 用户所有角色值，用于shiro做角色权限的判断
+     */
+    @Transient
+    private Set<String> roles;
+
+    /**
+     * 用户所有权限值，用于shiro做资源权限的判断
+     */
+    @Transient
+    private Set<String> perms;
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
+
+    public Set<String> getPerms() {
+        return perms;
+    }
+
+    public void setPerms(Set<String> perms) {
+        this.perms = perms;
+    }
 
     public String getId() {
         return id;
