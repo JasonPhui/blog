@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
 * @Description: RolePermService接口实现类
@@ -18,5 +19,9 @@ public class RolePermServiceImpl extends AbstractService<RolePerm> implements Ro
     @Resource
     private RolePermMapper rolePermMapper;
 
+    @Override
+    public List<String> getPermsByUserId(String userId) {
+        return rolePermMapper.getPermsByUserId(userId);
+    }
 }
 
