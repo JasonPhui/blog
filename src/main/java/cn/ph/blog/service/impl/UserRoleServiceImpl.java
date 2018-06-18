@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
 * @Description: UserRoleService接口实现类
@@ -18,5 +19,8 @@ public class UserRoleServiceImpl extends AbstractService<UserRole> implements Us
     @Resource
     private UserRoleMapper userRoleMapper;
 
+    public List<String> getRolesByUserId(String userId){
+        return userRoleMapper.getRolesByUserId(userId);
+    }
 }
 
