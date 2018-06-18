@@ -15,7 +15,7 @@ public class ProjectConstant {
     public static final String MAPPER_PACKAGE = BASE_PACKAGE + ".dao";
 
     // 使用主数据源
-    public static final String MAPPER_PACKAGE_DB1 = MAPPER_PACKAGE + ",db1";
+    public static final String MAPPER_PACKAGE_DB1 = MAPPER_PACKAGE + ".db1";
 
     // 使用从数据源
     public static final String MAPPER_PACKAGE_DB2 = MAPPER_PACKAGE + ".db2";

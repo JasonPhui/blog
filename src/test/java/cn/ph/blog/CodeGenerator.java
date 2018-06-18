@@ -44,7 +44,7 @@ public class CodeGenerator {
      * @param args
      */
     public static void main(String[] args) {
-        genCode("user_label");
+        genCode("user_role");
     }
 
     /**
@@ -137,7 +137,7 @@ public class CodeGenerator {
             data.put("basePackageService", ProjectConstant.SERVICE_PACKAGE);
             data.put("basePackageServiceImpl", ProjectConstant.SERVICE_IMPL_PACKAGE);
             data.put("basePackageModel", ProjectConstant.MODEL_PACKAGE);
-            data.put("basePackageDao", ProjectConstant.MAPPER_PACKAGE_DB2);
+            data.put("basePackageDao", ProjectConstant.MAPPER_PACKAGE_DB1);
 
             File file = new File(JAVA_PATH + PACKAGE_PATH_SERVICE + modelNameUpperCamel + "Service.java");
             if (!file.getParentFile().exists()) {
@@ -228,7 +228,7 @@ public class CodeGenerator {
     private static SqlMapGeneratorConfiguration getSqlMapGeneratorConfiguration(){
         SqlMapGeneratorConfiguration sqlMapGeneratorConfiguration = new SqlMapGeneratorConfiguration();
         sqlMapGeneratorConfiguration.setTargetProject(RESOURCES_PATH);
-        sqlMapGeneratorConfiguration.setTargetPackage("mapper/db2");
+        sqlMapGeneratorConfiguration.setTargetPackage("mapper/db1");
         return sqlMapGeneratorConfiguration;
     }
 
@@ -236,7 +236,7 @@ public class CodeGenerator {
     private static JavaClientGeneratorConfiguration getJavaClientGeneratorConfiguration(){
         JavaClientGeneratorConfiguration javaClientGeneratorConfiguration = new JavaClientGeneratorConfiguration();
         javaClientGeneratorConfiguration.setTargetProject(JAVA_PATH);
-        javaClientGeneratorConfiguration.setTargetPackage(ProjectConstant.MAPPER_PACKAGE_DB2);
+        javaClientGeneratorConfiguration.setTargetPackage(ProjectConstant.MAPPER_PACKAGE_DB1);
         //所有的方法都在XML中，接口调用依赖XML文件。
         javaClientGeneratorConfiguration.setConfigurationType("XMLMAPPER");
         return javaClientGeneratorConfiguration;
