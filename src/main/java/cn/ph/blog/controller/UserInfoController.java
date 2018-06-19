@@ -1,5 +1,6 @@
 package cn.ph.blog.controller;
 
+import cn.ph.blog.core.aop.AnnotationLog;
 import cn.ph.blog.core.ret.RetResponse;
 import cn.ph.blog.core.ret.RetResult;
 import cn.ph.blog.core.ret.ServiceException;
@@ -35,6 +36,7 @@ public class UserInfoController {
             @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Integer", paramType = "query")
     })
     @PostMapping("/selectById")
+    @AnnotationLog(remark = "查询")
     public RetResult<UserInfo> selectById(@RequestParam String id) {
         UserInfo userInfo = userInfoService.selectById(id);
         return RetResponse.makeOKRsp(userInfo);
