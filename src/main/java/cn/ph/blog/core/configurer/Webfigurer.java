@@ -9,6 +9,8 @@ import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -33,6 +35,7 @@ import java.util.List;
 @Configuration
 public class Webfigurer extends WebMvcConfigurationSupport {
 
+    private static final Logger logger = LoggerFactory.getLogger(Webfigurer.class);
     /**
      * 自定义消息转换器
      * 增加fastjson消息转换器
@@ -109,6 +112,7 @@ public class Webfigurer extends WebMvcConfigurationSupport {
      * 根据异常类型确定返回数据
      */
     private RetResult<Object> getResultByHandleException(HttpServletRequest request, Object handler, Exception e){
+        String message;
         RetResult<Object> result = new RetResult<Object>();
         // 业务失败的异常，如“账号或密码错误”
         if (e instanceof ServiceException) {
@@ -123,7 +127,6 @@ public class Webfigurer extends WebMvcConfigurationSupport {
             result.setCode(RetCode.FAIL).setMsg(e.getMessage());
         } else {
             result.setCode(RetCode.INTERNAL_SERVER_ERROR).setMsg("接口 [" + request.getRequestURI() + "] 内部错误，请联系管理员");
-            String message;
             if (handler instanceof HandlerMethod) {
                 HandlerMethod handlerMethod = (HandlerMethod) handler;
                 message = String.format("接口 [%s] 出现异常，方法：%s.%s，异常摘要：%s", request.getRequestURI(), handlerMethod.getBean().getClass().getName(), handlerMethod.getMethod()
@@ -131,9 +134,10 @@ public class Webfigurer extends WebMvcConfigurationSupport {
             } else {
                 message = e.getMessage();
             }
+            // 将异常信息写入日志
+            logger.error(message);
         }
-        // 将异常信息写入日志
-        e.printStackTrace();
+
         return result;
     }
 
@@ -148,6 +152,7 @@ public class Webfigurer extends WebMvcConfigurationSupport {
             response.getWriter().write(JSON.toJSONString(result, SerializerFeature.WriteMapNullValue));
         } catch (IOException e){
             //将异常写入日志
+            logger.error(e.getMessage());
         }
     }
 
