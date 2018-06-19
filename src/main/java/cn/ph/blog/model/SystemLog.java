@@ -5,6 +5,10 @@ import javax.persistence.*;
 
 @Table(name = "system_log")
 public class SystemLog {
+
+    public static final String LOGERROR = "error";
+
+    public static final String LOGINFO = "info";
     @Id
     private String id;
 
