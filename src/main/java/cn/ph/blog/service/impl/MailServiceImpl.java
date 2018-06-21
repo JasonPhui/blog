@@ -94,7 +94,7 @@ public class MailServiceImpl implements MailService{
             helper.setFrom(from);
             helper.setTo(mail.getTo());
             helper.setSubject(mail.getSubject());
-            helper.setText("<html><body><img src=\"cid:chuchen\" ></body></html>", true);
+            helper.setText("<html><body><img src=\"cid:a\" ></body></html>", true);
 
             FileSystemResource file = new FileSystemResource(new File("C:\\Users\\Administrator\\Pictures\\a.png"));
             // addInline函数中资源名称chuchen需要与正文中cid:chuchen对应起来
