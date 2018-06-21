@@ -1,5 +1,6 @@
 package cn.ph.blog.core.utils;
 
+import java.util.Random;
 import java.util.UUID;
 
 public class ApplicationUtils {
@@ -11,4 +12,18 @@ public class ApplicationUtils {
         return temp;
     }
 
+    /**
+     * 生成六位数字字符串
+     * @return 返回六位数字字符串
+     */
+    public static String getNumStringRandom(int length){
+        String sources = "0123456789"; // 加上一些字母，就可以生成pc站的验证码了
+        Random rand = new Random();
+        StringBuffer flag = new StringBuffer();
+        for (int j = 0; j < length; j++)
+        {
+            flag.append(sources.charAt(rand.nextInt(9)) + "");
+        }
+        return flag.toString();
+    }
 }
