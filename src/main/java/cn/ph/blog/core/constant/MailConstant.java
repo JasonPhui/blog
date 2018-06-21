@@ -10,5 +10,5 @@ public class MailConstant {
     /**
      * 模板存放的路径
      */
-    public static final String TEMPLATEPATH = "src/test/java/resources/template/mail";
+    public static final String TEMPLATEPATH = "src/main/resources/template/mail";
 }
