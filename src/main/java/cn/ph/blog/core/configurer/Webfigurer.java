@@ -169,7 +169,8 @@ public class Webfigurer extends WebMvcConfigurationSupport {
         super.addResourceHandlers(registry);
     }
 
-    public void addInterceptor(InterceptorRegistry register){
-        register.addInterceptor(new Interceptor1()).addPathPatterns("/userinfo/selectAll");
+    public void addInterceptor(InterceptorRegistry registry){
+        registry.addInterceptor(new Interceptor1()).addPathPatterns("/userinfo/selectAll");
+        super.addInterceptors(registry);
     }
 }
