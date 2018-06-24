@@ -1,5 +1,6 @@
 package cn.ph.blog.core.configurer;
 
+import cn.ph.blog.core.interceptor.Interceptor1;
 import cn.ph.blog.core.ret.RetCode;
 import cn.ph.blog.core.ret.RetResult;
 import cn.ph.blog.core.ret.ServiceException;
@@ -16,8 +17,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
@@ -164,5 +167,9 @@ public class Webfigurer extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
         registry.addResourceHandler("/favicon.ico").addResourceLocations("classpath:/META-INF/resources/favicon.ico");
         super.addResourceHandlers(registry);
+    }
+
+    public void addInterceptor(InterceptorRegistry register){
+        register.addInterceptor(new Interceptor1()).addPathPatterns("/userinfo/selectAll");
     }
 }
